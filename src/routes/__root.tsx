@@ -24,7 +24,7 @@ export const Route = createRootRoute({
     return (
       <Layout style={{ minHeight: "100vh" }}>
         <Header style={{ color: "white", fontSize: 20 }}>
-          Видеоаналитика событий
+          Атом.Хайлайты
         </Header>
         <Layout>
           <Sider
