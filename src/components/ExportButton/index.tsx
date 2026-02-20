@@ -6,9 +6,13 @@ import { type IVideoEvent } from "@/types";
 interface ExportButtonsProps {
   events: IVideoEvent[];
   videoUrl?: string;
+  videoId: number;
 }
 
-export const ExportButtons: React.FC<ExportButtonsProps> = ({ events }) => {
+export const ExportButtons: React.FC<ExportButtonsProps> = ({
+  events,
+  videoId
+}) => {
   const handleExportReport = () => {
     const blob = new Blob([JSON.stringify(events, null, 2)], {
       type: "application/json"
@@ -22,16 +26,15 @@ export const ExportButtons: React.FC<ExportButtonsProps> = ({ events }) => {
     message.success("Отчёт экспортирован");
   };
 
-  const handleExportHighlights = () => {
-    message.info("Экспорт хайлайтов (нарезка видео) – заглушка");
-  };
-
   return (
     <Flex gap="small" wrap>
       <Button icon={<FileTextOutlined />} onClick={handleExportReport}>
         Экспорт отчёта
       </Button>
-      <Button icon={<DownloadOutlined />} onClick={handleExportHighlights}>
+      <Button
+        variant="solid"
+        icon={<DownloadOutlined />}
+        href={`http://45.80.129.41:8001/api/highlight-files/?video_id=${videoId}`}>
         Экспорт хайлайтов
       </Button>
     </Flex>

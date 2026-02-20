@@ -140,6 +140,7 @@ export const VideoDetailPage = () => {
                 <Col span={8}>
                   <Card title="Экспорт">
                     <ExportButtons
+                      videoId={video.id}
                       events={events ?? []}
                       videoUrl={video.file}
                     />
